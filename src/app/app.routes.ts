@@ -3,6 +3,7 @@ import { Login } from './pages/login/login';
 import { Layout } from './pages/layout/layout';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { EmployeeList } from './pages/employee-list/employee-list';
+import { EmployeeForm } from './pages/employee-form/employee-form';
 
 export const routes: Routes = [
 
@@ -27,6 +28,10 @@ export const routes: Routes = [
             {
                 path: 'employee-list',
                 component: EmployeeList,
+            },
+               {
+                path: 'new-employee',
+                component: EmployeeForm,
             }
         ]
     }

@@ -1,1 +1,92 @@
-<p>employee-form works!</p>
+<div class="employee-form-page">
+	<div class="form-heading">
+		<div>
+			<a class="back-link" href="/admin/employee-list">&#8592; Back to employees</a>
+			<p class="section-kicker">People directory</p>
+			<h2>Add employee</h2>
+			<p class="page-description">Create a profile and assign the employee to your organization.</p>
+		</div>
+	</div>
+
+	<form class="employee-form" aria-label="Add employee form">
+		<section class="form-section">
+			<div class="section-heading">
+				<div class="section-number">01</div>
+				<div><h3>Personal information</h3><p>Basic details for this employee profile.</p></div>
+			</div>
+			<div class="form-grid">
+				<label class="form-field form-field-wide">
+					<span>Employee name <b>*</b></span>
+					<input  type="text" [(ngModel)]="employeeObj.employeeName" placeholder="Enter full name">
+				</label>
+				<label class="form-field">
+					<span>Contact number <b>*</b></span>
+					<input type="tel" [(ngModel)]="employeeObj.contactNo" placeholder="Enter contact number">
+				</label>
+				<label class="form-field">
+					<span>Email address <b>*</b></span>
+					<input type="email" [(ngModel)]="employeeObj.emailId" placeholder="name@company.com">
+				</label>
+				<label class="form-field">
+					<span>Gender <b>*</b></span>
+					<select [(ngModel)]="employeeObj.gender">
+						<option value="">Select gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+					</select>
+				</label>
+			</div>
+		</section>
+
+		<section class="form-section">
+			<div class="section-heading">
+				<div class="section-number">02</div>
+				<div><h3>Organization</h3><p>Place this employee in the right department and role.</p></div>
+			</div>
+			<div class="form-grid">
+				<label class="form-field">
+					<span>Parent department <b>*</b></span>
+					<select><option value="">Select parent department</option><option selected>Technology</option><option>Business</option><option>Operations</option></select>
+				</label>
+				<label class="form-field">
+					<span>Child department <b>*</b></span>
+					<select [(ngModel)]="employeeObj.deptId">
+						<option value="">Select child department</option>
+						<option value="1">Engineering</option>
+						<option value="2">Product</option>
+						<option value="3">Quality Assurance</option>
+					</select>
+				</label>
+				<label class="form-field">
+					<span>Role <b>*</b></span>
+					<select [(ngModel)]="employeeObj.role">
+						<option value="">Select role</option>
+						<option value="Employee">Employee</option>
+						<option value="Manager">Manager</option>
+						<option value="Administrator">Administrator</option>
+					</select>
+				</label>
+			</div>
+		</section>
+
+		<section class="form-section security-section">
+			<div class="section-heading">
+				<div class="section-number">03</div>
+				<div><h3>Account access</h3><p>Set a temporary password for the first sign-in.</p></div>
+			</div>
+			<div class="form-grid">
+				<label class="form-field form-field-wide">
+					<span>Temporary password <b>*</b></span>
+					<input type="password" value="Florian111" placeholder="Create a temporary password">
+					<small>Password should be at least 8 characters.</small>
+				</label>
+			</div>
+		</section>
+
+		<div class="form-actions">
+			<a class="ui-button ui-button-secondary" href="/admin/employee-list">Cancel</a>
+			<button class="ui-button ui-button-primary" type="button"><span class="button-plus" aria-hidden="true">+</span> Save employee</button>
+		</div>
+	</form>
+</div>

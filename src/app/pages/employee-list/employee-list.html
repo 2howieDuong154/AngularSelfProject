@@ -1,1 +1,84 @@
-<p>employee-list works!</p>
+<div class="employee-page">
+	<div class="page-heading">
+		<div>
+			<p class="section-kicker">People directory</p>
+			<h2>Employees</h2>
+			<p class="page-description">Manage your people, roles, and account status.</p>
+		</div>
+		<button class="ui-button ui-button-primary add-button" type="button" routerLink="/admin/new-employee">
+			<span class="button-plus" aria-hidden="true">+</span>
+			Add employee
+		</button>
+	</div>
+
+	<div class="summary-row" aria-label="Employee summary">
+		<div class="summary-item"><span>Total employees</span><strong>24</strong></div>
+		<div class="summary-item"><span>Active</span><strong class="summary-success">21</strong></div>
+		<div class="summary-item"><span>On leave</span><strong class="summary-warning">3</strong></div>
+	</div>
+
+	<section class="employee-surface">
+		<div class="surface-toolbar">
+			<div>
+				<h3>All employees <span>24</span></h3>
+				<p>Keep your team information up to date.</p>
+			</div>
+			<div class="toolbar-actions">
+				<label class="ui-search search-control">
+					<span aria-hidden="true">&#9906;</span>
+					<input type="search" placeholder="Search employees" aria-label="Search employees">
+				</label>
+				<button class="ui-button ui-button-secondary filter-button" type="button">
+					<span aria-hidden="true">&#9776;</span>
+					Filter
+				</button>
+			</div>
+		</div>
+
+		<div class="table-scroll">
+			<table class="employee-table">
+				<thead>
+					<tr>
+						<th>Employee</th>
+						<th>Department</th>
+						<th>Role</th>
+						<th>Joined</th>
+						<th>Status</th>
+						<th><span class="visually-hidden">Actions</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><div class="employee-cell"><span class="ui-avatar">JD</span><div><strong>John Doe</strong><span>john.doe@acme.co</span></div></div></td>
+						<td>Engineering</td><td>Product Manager</td><td>Jan 12, 2023</td>
+						<td><span class="ui-status ui-status-active">Active</span></td>
+						<td><div class="row-actions"><button class="ui-icon-button ui-icon-button-edit" type="button" aria-label="Edit John Doe" title="Edit">&#9998;</button><button class="ui-icon-button ui-icon-button-delete" type="button" aria-label="Delete John Doe" title="Delete">&#9003;</button></div></td>
+					</tr>
+					<tr>
+						<td><div class="employee-cell"><span class="ui-avatar ui-avatar-green">AS</span><div><strong>Alex Smith</strong><span>alex.smith@acme.co</span></div></div></td>
+						<td>Design</td><td>UX Designer</td><td>Mar 04, 2023</td>
+						<td><span class="ui-status ui-status-active">Active</span></td>
+						<td><div class="row-actions"><button class="ui-icon-button ui-icon-button-edit" type="button" aria-label="Edit Alex Smith" title="Edit">&#9998;</button><button class="ui-icon-button ui-icon-button-delete" type="button" aria-label="Delete Alex Smith" title="Delete">&#9003;</button></div></td>
+					</tr>
+					<tr>
+						<td><div class="employee-cell"><span class="ui-avatar ui-avatar-gold">MB</span><div><strong>Maria Brown</strong><span>maria.brown@acme.co</span></div></div></td>
+						<td>Marketing</td><td>Content Strategist</td><td>Jun 18, 2023</td>
+						<td><span class="ui-status ui-status-inactive">On leave</span></td>
+						<td><div class="row-actions"><button class="ui-icon-button ui-icon-button-edit" type="button" aria-label="Edit Maria Brown" title="Edit">&#9998;</button><button class="ui-icon-button ui-icon-button-delete" type="button" aria-label="Delete Maria Brown" title="Delete">&#9003;</button></div></td>
+					</tr>
+					<tr>
+						<td><div class="employee-cell"><span class="ui-avatar ui-avatar-red">LW</span><div><strong>Lucas Williams</strong><span>lucas.williams@acme.co</span></div></div></td>
+						<td>Finance</td><td>Financial Analyst</td><td>Sep 26, 2023</td>
+						<td><span class="ui-status ui-status-active">Active</span></td>
+						<td><div class="row-actions"><button class="ui-icon-button ui-icon-button-edit" type="button" aria-label="Edit Lucas Williams" title="Edit">&#9998;</button><button class="ui-icon-button ui-icon-button-delete" type="button" aria-label="Delete Lucas Williams" title="Delete">&#9003;</button></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="table-footer">
+			<span>Showing 1 to 4 of 24 employees</span>
+			<div class="pagination"><button type="button" aria-label="Previous page" disabled>&#8249;</button><button class="current-page" type="button">1</button><button type="button">2</button><button type="button">3</button><span>...</span><button type="button">6</button><button type="button" aria-label="Next page">&#8250;</button></div>
+		</div>
+	</section>
+</div>
