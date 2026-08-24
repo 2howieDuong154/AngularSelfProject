@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { GlobalConstants } from '../../core/constants/global.constant';
 
 @Component({
   imports: [FormsModule],
@@ -23,18 +24,17 @@ export class Login {
     console.log('Login object:', this.loginObject);
     this.http.post(environment.API_URL + "login", this.loginObject).subscribe({
       next: (response: any) => {
-        debugger;
         console.log('Login response:', response);
         if (response.result) {
           // Handle successful login
           alert('Login successful!');
-          this.router.navigate(['admin/dashboard']);
+          localStorage.setItem(GlobalConstants.LOGIN_LOCAL_KEY, JSON.stringify(response.data));
+          this.router.navigateByUrl('admin/dashboard');
         } else {
           alert(response.message || 'Login failed. Please check your credentials.');
         }
       },
       error: (error) => {
-        debugger;
         console.error('Login error:', error);
       }
     });

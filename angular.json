@@ -66,6 +66,9 @@
             "production": {
               "buildTarget": "employee_management_26:build:production"
             },
+            "options": {
+              "proxyConfig": "proxy.conf.json"
+            },
             "development": {
               "buildTarget": "employee_management_26:build:development"
             }
