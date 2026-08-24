@@ -1,0 +1,80 @@
+<div data-theme="slate-minimal" class="login-page">
+  <div class="login-card">
+    <div class="login-panel login-panel--form">
+      <div class="brand-wrap">
+        <div class="brand-mark">EM</div>
+        <div>
+          <p class="brand-label">Employee Management</p>
+        </div>
+      </div>
+
+      <div class="login-copy">
+        <p class="eyebrow">Welcome back</p>
+        <h1>Sign in to your workspace</h1>
+      </div>
+
+      <form class="login-form" aria-label="Login form">
+        <div class="mb-3">
+          <label for="userName" class="form-label">Username</label>
+          <input
+            id="userName"
+            class="form-control form-control-lg"
+            type="text"
+            name="userName"
+            placeholder="Enter your username"
+            autocomplete="username"
+            [(ngModel)]="loginObject.userName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            id="password"
+            class="form-control form-control-lg"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            [(ngModel)]="loginObject.password"
+          />
+        </div>
+
+        <div class="form-row">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="rememberMe" />
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+          </div>
+          <a href="#" class="text-link">Forgot password?</a>
+        </div>
+
+        <button (click)="onLogin()" type="submit"  class="btn btn-primary btn-login">Sign In</button>
+      </form>
+    </div>
+
+    <div class="login-panel login-panel--visual">
+      <div class="visual-content">
+        <span class="status-pill">Secure access</span>
+        <h2>Team operations, made simple.</h2>
+        <p>
+          Manage employees, projects, schedules, and performance from one calm and focused workspace.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <small>Active staff</small>
+            <strong>246</strong>
+          </div>
+          <div class="stat-box">
+            <small>Open roles</small>
+            <strong>18</strong>
+          </div>
+          <div class="stat-box">
+            <small>Projects</small>
+            <strong>32</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

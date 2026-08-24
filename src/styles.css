@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --bs-body-font-family: 'Segoe UI', sans-serif;
+  --bs-body-color: #1f2430;
+  --bs-body-bg: #fafafa;
+
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-sidebar: #1f2430;
+  --color-primary: #2f3b52;
+  --color-primary-dark: #1f2836;
+  --color-accent: #3e7cb1;
+  --color-text-primary: #1f2430;
+  --color-text-secondary: #6b7280;
+  --color-border: #e2e4e8;
+  --color-success: #3e9c6d;
+  --color-warning: #c98a3d;
+  --color-danger: #c4514a;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--color-bg);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--color-text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[data-theme='slate-minimal'] {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-sidebar: #1f2430;
+  --color-primary: #2f3b52;
+  --color-primary-dark: #1f2836;
+  --color-accent: #3e7cb1;
+  --color-text-primary: #1f2430;
+  --color-text-secondary: #6b7280;
+  --color-border: #e2e4e8;
+  --color-success: #3e9c6d;
+  --color-warning: #c98a3d;
+  --color-danger: #c4514a;
+}
