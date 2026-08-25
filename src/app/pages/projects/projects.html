@@ -1,1 +1,113 @@
-<p>projects works!</p>
+<div class="projects-page">
+	<div class="page-heading">
+		<div>
+			<p class="section-kicker">Workspace</p>
+			<h2>Projects</h2>
+			<p class="page-description">View active projects and manage employee assignments.</p>
+		</div>
+		<button class="ui-button ui-button-primary" type="button" (click)="openProjectForm()">
+			<span class="button-plus" aria-hidden="true">+</span>
+			Add project
+		</button>
+	</div>
+
+	<section class="project-form-panel" [hidden]="!showProjectForm()" aria-labelledby="project-form-title">
+	<form [formGroup]="projectForm">
+		<div class="form-heading">
+			<p class="section-kicker">Project details</p>
+			<h3 id="project-form-title">Add project</h3>
+			<p class="page-description">Create a project and assign an employee.</p>
+		</div>
+		<div class="row g-3">
+			<div class="col-md-8 form-field"><label for="projectName">Project name <b>*</b></label><input formControlName="projectName" id="projectName" type="text" placeholder="Enter project name"></div>
+			<div class="col-md-4 form-field"><label for="projectId">Client Name</label><input formControlName="clientName" id="projectId" type="text"></div>
+			<div class="col-md-6 form-field"><label for="employeeId">Lead by Employee</label>
+				<select formControlName="leadByEmpId" id="employeeId">
+					@for (employee of employeeList$ | async; track $index) {
+						<option [value]="employee.employeeId">{{ employee.employeeName }}</option>
+					}
+					<option>Select employee</option>
+				</select>
+			</div>
+			<div class="col-md-6 form-field"><label for="projectRole">Role</label><input formControlName="projectId"  id="projectId" type="text" placeholder="Enter project role"></div>
+			<div class="col-md-6 form-field"><label for="startDate">Start Date</label><input formControlName="startDate" id="startDate" type="date"></div>
+			<div class="col-md-6 form-field"><label for="contactPerson">Contact Person</label><input formControlName="contactPerson" id="contactPerson" type="text" placeholder="Enter contact person"></div>
+			<div class="col-md-6 form-field"><label for="contactNo">Contact Number</label><input formControlName="contactNo" id="contactNo" type="text" placeholder="Enter contact number"></div>
+			<div class="col-md-6 form-field"><label for="emailId">Email ID</label><input formControlName="emailId" id="emailId" type="email" placeholder="Enter email ID"></div>
+		</div>
+		<div class="form-actions"><button class="ui-button ui-button-secondary" type="button" (click)="closeProjectForm()">Cancel</button><button class="ui-button ui-button-primary" type="button" (click)="saveProject()">Save project</button></div>
+	</form>
+	</section>
+
+	<div class="project-summary" aria-label="Project summary">
+		<div class="summary-item"><span>Total projects</span><strong>08</strong></div>
+		<div class="summary-item"><span>Active</span><strong class="summary-success">06</strong></div>
+		<div class="summary-item"><span>Assignments</span><strong>24</strong></div>
+	</div>
+
+	<section class="project-surface" aria-labelledby="project-list-title">
+		<div class="surface-toolbar">
+			<div>
+				<h3 id="project-list-title">All projects <span>08</span></h3>
+				<p>Keep project ownership and assignment details up to date.</p>
+			</div>
+			<label class="ui-search search-control">
+				<span aria-hidden="true">&#9906;</span>
+				<input type="search" placeholder="Search projects" aria-label="Search projects">
+			</label>
+		</div>
+
+		<div class="project-grid">
+			@for (item of projectLists(); track $index) {
+				<article class="project-card">
+				<div class="project-card-header">
+					<div class="project-mark" [style.background-color]="getProjectColor(item.projectName)">{{item.projectName.charAt(0) | uppercase}}</div>
+					<span class="ui-status ui-status-active">Active</span>
+				</div>
+				<h4>{{ item.projectName }}</h4>
+				<p class="project-description">Core platform modernization and service integration.</p>
+				<dl class="project-details">
+					<div><dt>Assigned employee</dt><dd>{{item.employeeName}}</dd></div>
+					<div><dt>Assigned date</dt><dd>{{item.startDate}}</dd></div>
+					<div><dt>Contact person</dt><dd>{{item.contactPerson}}</dd></div>
+				</dl>
+				<div class="project-card-actions">
+					<button class="ui-button ui-button-secondary" type="button">Edit project</button>
+					<button class="ui-button ui-button-secondary" type="button" popovertarget="employee-assignment-modal">Add employee</button>
+					<button class="ui-icon-button ui-icon-button-delete" type="button" [attr.aria-label]="'Delete ' + item.projectName" title="Delete" (click)="removeProject(item.projectId)">&#9003;</button>
+				</div>
+			</article>
+			}
+		</div>
+	</section>
+
+	<section id="employee-assignment-modal" class="employee-assignment-modal" popover aria-labelledby="employee-assignment-title">
+		<div class="modal-heading">
+			<div>
+				<p class="section-kicker">Project assignment</p>
+				<h3 id="employee-assignment-title">Project employees</h3>
+			</div>
+			<button class="ui-icon-button modal-close" type="button" popovertarget="employee-assignment-modal" popovertargetaction="hide" aria-label="Close assignment modal" title="Close">&#10005;</button>
+		</div>
+		<div class="assignment-fields">
+			<div class="form-field"><label for="assignmentEmployee">Employee</label><select id="assignmentEmployee"><option value="">Select employee</option><option>Alex Morgan</option><option>Priya Shah</option><option>Jordan Lee</option></select></div>
+			<div class="form-field"><label for="assignmentDate">Assigned date</label><input id="assignmentDate" type="date" value="2026-08-25"></div>
+			<div class="form-field"><label for="assignmentRole">Role</label><input id="assignmentRole" type="text" placeholder="e.g. Developer"></div>
+			<label class="active-toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span>Active</span></label>
+		</div>
+		<button class="ui-button ui-button-primary add-employee-button" type="button">Add employee</button>
+		<div class="current-team-heading"><div><p class="section-kicker">Current team</p><h4>Assigned employees</h4></div><strong>3 employees</strong></div>
+		<div class="employee-table-wrap">
+			<table class="employee-table">
+				<thead><tr><th>Employee</th><th>Role</th><th>Assigned date</th><th>Status</th><th></th></tr></thead>
+				<tbody>
+					<tr><td><strong>Alex Morgan</strong><small>Employee #01</small></td><td>Developer</td><td>01 Aug 2026</td><td><span class="assignment-status assignment-status-active">Active</span></td><td><button class="remove-employee-button" type="button">Remove</button></td></tr>
+					<tr><td><strong>Priya Shah</strong><small>Employee #02</small></td><td>Designer</td><td>03 Aug 2026</td><td><span class="assignment-status assignment-status-active">Active</span></td><td><button class="remove-employee-button" type="button">Remove</button></td></tr>
+					<tr><td><strong>Jordan Lee</strong><small>Employee #03</small></td><td>Tester</td><td>05 Aug 2026</td><td><span class="assignment-status assignment-status-inactive">Inactive</span></td><td><button class="remove-employee-button" type="button">Remove</button></td></tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="modal-actions"><button class="ui-button ui-button-secondary" type="button" popovertarget="employee-assignment-modal" popovertargetaction="hide">Cancel</button><button class="ui-button ui-button-primary" type="button" popovertarget="employee-assignment-modal" popovertargetaction="hide">Done</button></div>
+	</section>
+
+</div>
