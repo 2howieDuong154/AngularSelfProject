@@ -5,7 +5,7 @@
 			<h2>Employees</h2>
 			<p class="page-description">Manage your people, roles, and account status.</p>
 		</div>
-		<button class="ui-button ui-button-primary add-button" type="button" routerLink="/admin/new-employee">
+		<button class="ui-button ui-button-primary add-button" type="button" routerLink="/admin/new-employee/0">
 			<span class="button-plus" aria-hidden="true">+</span>
 			Add employee
 		</button>
@@ -39,6 +39,7 @@
 			<table class="employee-table">
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>Employee</th>
 						<th>Department</th>
 						<th>Role</th>
@@ -47,26 +48,23 @@
 						<th><span class="visually-hidden">Actions</span></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody> 
+					@for (employee of employeeList$ | async; track $index) {
 					<tr>
-						<td><div class="employee-cell"><span class="ui-avatar">JD</span><div><strong>John Doe</strong><span>john.doe@acme.co</span></div></div></td>
-						<td>Engineering</td><td>Product Manager</td><td>Jan 12, 2023</td>
+						<td>{{ $index + 1 }}</td>
+						<td><div class="employee-cell"><span class="ui-avatar ui-avatar-green">{{ employee.employeeName  | 	slice:0:2 }}</span><div><strong>{{ employee.employeeName }}</strong><span></span></div></div></td>
+						<td>{{ employee.deptId }}</td>
+						<td>{{ employee.role }}</td>
+						<td>{{ employee.createdDate }}</td>
 						<td><span class="ui-status ui-status-active">Active</span></td>
-						<td><div class="row-actions"><button class="ui-icon-button ui-icon-button-edit" type="button" aria-label="Edit John Doe" title="Edit">&#9998;</button><button class="ui-icon-button ui-icon-button-delete" type="button" aria-label="Delete John Doe" title="Delete">&#9003;</button></div></td>
+						<td><div class="row-actions">
+							<button class="ui-icon-button ui-icon-button-edit" routerLink="/admin/new-employee/{{ employee.employeeId }}" type="button" title="Edit">&#9998;</button>
+							<button class="ui-icon-button ui-icon-button-delete" type="button" aria-label="" title="Delete">&#9003;</button></div></td>
 					</tr>
+				}
+					
 					<tr>
-						<td><div class="employee-cell"><span class="ui-avatar ui-avatar-green">AS</span><div><strong>Alex Smith</strong><span>alex.smith@acme.co</span></div></div></td>
-						<td>Design</td><td>UX Designer</td><td>Mar 04, 2023</td>
-						<td><span class="ui-status ui-status-active">Active</span></td>
-						<td><div class="row-actions"><button class="ui-icon-button ui-icon-button-edit" type="button" aria-label="Edit Alex Smith" title="Edit">&#9998;</button><button class="ui-icon-button ui-icon-button-delete" type="button" aria-label="Delete Alex Smith" title="Delete">&#9003;</button></div></td>
-					</tr>
-					<tr>
-						<td><div class="employee-cell"><span class="ui-avatar ui-avatar-gold">MB</span><div><strong>Maria Brown</strong><span>maria.brown@acme.co</span></div></div></td>
-						<td>Marketing</td><td>Content Strategist</td><td>Jun 18, 2023</td>
-						<td><span class="ui-status ui-status-inactive">On leave</span></td>
-						<td><div class="row-actions"><button class="ui-icon-button ui-icon-button-edit" type="button" aria-label="Edit Maria Brown" title="Edit">&#9998;</button><button class="ui-icon-button ui-icon-button-delete" type="button" aria-label="Delete Maria Brown" title="Delete">&#9003;</button></div></td>
-					</tr>
-					<tr>
+						<td>100</td>
 						<td><div class="employee-cell"><span class="ui-avatar ui-avatar-red">LW</span><div><strong>Lucas Williams</strong><span>lucas.williams@acme.co</span></div></div></td>
 						<td>Finance</td><td>Financial Analyst</td><td>Sep 26, 2023</td>
 						<td><span class="ui-status ui-status-active">Active</span></td>

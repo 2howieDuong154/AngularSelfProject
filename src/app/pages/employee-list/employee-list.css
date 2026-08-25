@@ -21,7 +21,7 @@
 .search-control { width: 210px; }
 .search-control span { font-size: 17px; transform: rotate(-20deg); }
 .filter-button { min-height: 38px; }
-.table-scroll { overflow-x: auto; }
+.table-scroll { max-height: 420px; overflow: auto; }
 .employee-table { width: 100%; min-width: 780px; border-collapse: collapse; text-align: left; }
 .employee-table th { padding: 12px 24px; color: #7d8794; background: #f7f8fa; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .employee-table td { padding: 14px 24px; border-top: 1px solid #edf0f2; color: #596473; font-size: 12px; white-space: nowrap; }
