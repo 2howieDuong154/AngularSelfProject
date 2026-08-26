@@ -12,5 +12,7 @@ export const GlobalConstants = {
         GET_ALL_PROJECTS: 'GetAllProjects',
         GET_PROJECT_BY_ID: 'GetProject',
         CREATE_PROJECT: 'CreateProject',
+        GET_ALL_PROJECT_EMPLOYEES: 'GetAllProjectEmployees',
+        ADD_EMPLOYEE_TO_PROJECT: 'CreateProjectEmployee'
     }
 };
